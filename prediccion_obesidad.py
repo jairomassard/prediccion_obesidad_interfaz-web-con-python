@@ -23,23 +23,28 @@ def predecir_nivel_obesidad(modelo, input_data):
 # Título de la aplicación
 st.title('Predicción de Nivel de Obesidad')
 
-# Inputs de usuario
-age = st.number_input('Edad', min_value=1, max_value=100, value=25)
-height = st.number_input('Altura (en metros)', min_value=0.5, max_value=2.5, value=1.75)
-weight = st.number_input('Peso (en kg)', min_value=1, max_value=200, value=70)
-fcvc = st.slider('Frecuencia de consumo de vegetales FCVC (0-3)', 0, 3, 2)
-ncp = st.slider('Número de comidas principales al día NCP', 1, 4, 3)
-ch2o = st.slider('Litros de agua al día CH2O', 0, 3, 2)
-faf = st.slider('Frecuencia de actividad física FAF', 0, 3, 2)
-tue = st.slider('Horas de uso de tecnología al día TUE', 0, 5, 2)
-gender = st.selectbox('Género', ['Masculino', 'Femenino'])
-family_history = st.selectbox('Historial familiar de sobrepeso', ['Sí', 'No'])
-favc = st.selectbox('Consumo frecuente de alimentos altos en calorías FAVC', ['Sí', 'No'])
-caec = st.selectbox('Frecuencia de comer entre comidas CAEC', ['Frecuentemente', 'A veces', 'Nunca'])
-smoke = st.selectbox('Usted Fuma', ['Sí', 'No'])
-scc = st.selectbox('Monitorea las calorías que consume SCC', ['Sí', 'No'])
-calc = st.selectbox('Frecuencia de consumo de alcohol CALC', ['Frecuentemente', 'A veces', 'Nunca'])
-mtrans = st.selectbox('Transporte utilizado MTRANS', ['Automóvil', 'Moto', 'Bicicleta', 'Transporte público', 'Caminando'])
+# Organizar los inputs en columnas
+col1, col2 = st.columns(2)
+
+with col1:
+    age = st.number_input('Edad', min_value=1, max_value=100, value=25)
+    height = st.number_input('Altura (en metros)', min_value=0.5, max_value=2.5, value=1.75)
+    weight = st.number_input('Peso (en kg)', min_value=1, max_value=200, value=70)
+    fcvc = st.slider('Frecuencia de consumo de vegetales FCVC (0-3)', 0, 3, 2)
+    ncp = st.slider('Número de comidas principales al día NCP', 1, 4, 3)
+    ch2o = st.slider('Litros de agua al día CH2O', 0, 3, 2)    
+    faf = st.slider('Frecuencia de actividad física FAF', 0, 3, 2)
+    tue = st.slider('Horas de uso de tecnología al día TUE', 0, 5, 2)
+
+with col2:
+    gender = st.selectbox('Género', ['Masculino', 'Femenino'])
+    family_history = st.selectbox('Historial familiar de sobrepeso', ['Sí', 'No'])
+    favc = st.selectbox('Consumo frecuente de alimentos altos en calorías FAVC', ['Sí', 'No'])
+    caec = st.selectbox('Frecuencia de comer entre comidas CAEC', ['Frecuentemente', 'A veces', 'Nunca'])
+    smoke = st.selectbox('Usted Fuma', ['Sí', 'No'])
+    scc = st.selectbox('Monitorea las calorías que consume SCC', ['Sí', 'No'])
+    calc = st.selectbox('Frecuencia de consumo de alcohol CALC', ['Frecuentemente', 'A veces', 'Nunca'])
+    mtrans = st.selectbox('Transporte utilizado MTRANS', ['Automóvil', 'Moto', 'Bicicleta', 'Transporte público', 'Caminando'])
 
 # Conversión de los inputs a formato de entrada del modelo
 input_data = {
